@@ -69,17 +69,3 @@ File.open(filepath, 'wb') do |file|
   file.write(JSON.generate({ flats: data }))
 end
 
-
-serialized_flats = File.read(filepath)
-
-flats = JSON.parse(serialized_flats)
-p flats['flats'].size
-
-# flats['flats'].each do |flat|
-#   p flat["title"]
-#   p flat["price"]
-#   p flat["location"]
-#   p flat["description"]
-#   p flat["url"]
-#   puts ""
-# end
