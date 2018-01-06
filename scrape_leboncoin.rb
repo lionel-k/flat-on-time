@@ -3,7 +3,7 @@ require 'nokogiri'
 require 'json'
 
 urls = []
-(1..2).each { |page|
+(3..10).each { |page|
   urls << "https://www.leboncoin.fr/locations/offres/ile_de_france/paris/?o=#{page}&mre=1000&ret=1&ret=2&furn=1"
 }
 
