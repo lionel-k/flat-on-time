@@ -1,6 +1,6 @@
 require 'json'
 
-filepath = 'flats.json'
+filepath = 'flats-leboncoin.json'
 serialized_flats = File.read(filepath)
 
 unserialized_flats = JSON.parse(serialized_flats)
@@ -35,6 +35,8 @@ flats["may"].each do |flat|
   puts flat['url']
 end
 
-# janvier 13
-# fÃ©vrier 7
-# mars
+output = "result-search.json"
+
+File.open(output, 'wb') do |file|
+  file.write(JSON.generate(flats))
+end

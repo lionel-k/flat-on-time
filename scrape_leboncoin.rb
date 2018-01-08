@@ -3,13 +3,13 @@ require 'nokogiri'
 require 'json'
 
 urls = []
-(3..10).each { |page|
+(1..10).each { |page|
   urls << "https://www.leboncoin.fr/locations/offres/ile_de_france/paris/?o=#{page}&mre=1000&ret=1&ret=2&furn=1"
 }
 
 url = "paris-select.html"
 
-filepath = 'flats.json'
+filepath = 'flats-leboncoin.json'
 data = []
 
 def get_flat_details(item, flat_url)
