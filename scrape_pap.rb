@@ -5,7 +5,7 @@ require 'json'
 url = "pap.html"
 
 urls = []
-(1..10).each { |page|
+(1..5).each { |page|
   urls << "https://www.pap.fr/annonce/location-appartement-maison-residence-avec-service-paris-75-g439-jusqu-a-1000-euros-#{page}"
 }
 
@@ -19,13 +19,16 @@ def get_flat_details(item, flat_url)
   p full_flat_url = "https://www.pap.fr/#{flat_url}"
   # full_flat_url = "flat_pap.html"
   title = item.search('.h1').text.strip.encode('utf-8', 'iso-8859-1')
+  sleep(rand(1...5))
   price = item.search('.price').text.strip.encode('utf-8', 'iso-8859-1').split('Â')[0]
   price += " €"
 
   flat_html_file = open(full_flat_url).read
   flat_html_doc = Nokogiri::HTML(flat_html_file)
   location = flat_html_doc.search('.item-geoloc h2').text.strip
+  sleep(rand(1...5))
   description = flat_html_doc.search('.item-description').text.strip.encode('utf-8', 'iso-8859-1')
+  sleep(rand(1...5))
   # img = flat_html_doc.css('div.owl-carousel').children[1].children.first.values.first
   # puts ""
 
@@ -45,8 +48,9 @@ def get_flats(url)
   data = []
 
   html_doc.search('.title-item').each do |element|
+    sleep(rand(1...5))
     flat_url = element.attribute('href').value
-    sleep(15)
+    sleep(rand(5...20))
     data << get_flat_details(element, flat_url)
   end
   data
@@ -62,7 +66,7 @@ urls.each do |url|
   p url
   # p "#" * 10
   data += get_flats(url)
-  sleep(5)
+  sleep(rand(5...20))
   # p "#" * 10
 end
 
